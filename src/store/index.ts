@@ -1,8 +1,8 @@
-import { createStore } from "vuex";
+import Vuex from "vuex";
 
-export default createStore({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {}
+import { createStore } from "vuex";
+import { album } from "./album.module";
+
+export default new Vuex.Store({
+  modules: { album },
 });
