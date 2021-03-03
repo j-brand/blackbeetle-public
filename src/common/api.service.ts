@@ -1,16 +1,17 @@
 import Vue from "vue";
 
-import { API_URL } from "./enviornment";
+import { environment } from "./envionment";
 import axios from "axios";
 const ApiService = {
   init() {
-    axios.defaults.baseURL = API_URL;
+    axios.defaults.baseURL = environment.apiUrl;
   },
 
   get(endpoint: string, slug = "") {
+    console.log(`${endpoint}/${slug}`);
     return axios.get(`${endpoint}/${slug}`);
   },
-  
+
   /*   
 
   setHeader() {

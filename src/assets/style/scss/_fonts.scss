@@ -1,0 +1,28 @@
+
+    @font-face {
+        font-family: 'SuperGroteskWeb';
+        font-weight: 400;
+        font-display: swap;
+        src: url('~@/assets/fonts/SuperGroteskWeb_Regular/SuperGroteskWeb_Regular.eot'),
+             url('~@/assets/fonts/SuperGroteskWeb_Regular/SuperGroteskWeb_Regular.woff2') format('woff2'),
+             url('~@/assets/fonts/SuperGroteskWeb_Regular/SuperGroteskWeb_Regular.woff') format('woff'),
+             url('~@/assets/fonts/SuperGroteskWeb_Regular/SuperGroteskWeb_Regular.ttf')  format('truetype')      
+    }
+    @font-face {
+        font-family: 'SuperGroteskWeb';
+        font-weight: 500;
+        font-display: swap;
+        src: url('~@/assets/fonts/SuperGroteskWeb_Medium/SuperGroteskWeb_Medium.eot'),
+             url('~@/assets/fonts/SuperGroteskWeb_Medium/SuperGroteskWeb_Medium.woff2') format('woff2'),
+             url('~@/assets/fonts/SuperGroteskWeb_Medium/SuperGroteskWeb_Medium.woff') format('woff'),
+             url('~@/assets/fonts/SuperGroteskWeb_Medium/SuperGroteskWeb_Medium.ttf')  format('truetype')      
+    }
+    @font-face {
+        font-family: 'SuperGroteskWeb';
+        font-weight: 600;
+        font-display: swap;
+        src: url('~@/assets/fonts/SuperGroteskWeb_Bold/SuperGroteskWeb_Bold.eot'),
+             url('~@/assets/fonts/SuperGroteskWeb_Bold/SuperGroteskWeb_Bold.woff2') format('woff2'),
+             url('~@/assets/fonts/SuperGroteskWeb_Bold/SuperGroteskWeb_Bold.woff') format('woff'),
+             url('~@/assets/fonts/SuperGroteskWeb_Bold/SuperGroteskWeb_Bold.ttf')  format('truetype')      
+    }

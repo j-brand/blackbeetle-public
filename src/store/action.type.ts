@@ -1,2 +1,6 @@
-export const GET_ALBUM_BY_SLUG = "GET_ALBUM_BY_SLUG";
-export const GET_ALBUMS = "GET_ALBUMS";
+export enum ActionTypes {
+  GET_ALBUM_BY_SLUG = "GET_ALBUM_BY_SLUG",
+  GET_ALBUMS = "GET_ALBUMS",
+  GET_STORY_BY_SLUG = "GET_STORY_BY_SLUG",
+  GET_STORIES = "GET_STORIES",
+}
