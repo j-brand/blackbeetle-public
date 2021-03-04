@@ -86,7 +86,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .shadow-dummy {
   box-shadow: 0 15px 10px 0 rgba(0, 0, 0, 0.1);
 }
@@ -96,27 +96,25 @@ export default {
   padding-top: 1.4rem;
   margin: 0 auto;
   border-radius: 50%;
-}
-
-.logo-wrapper:before {
-  position: absolute;
-  content: "";
-  width: 150%;
-  height: 3.5rem;
-  left: -25%;
-  top: 0;
-  background: #eae7dc;
-  z-index: -1;
-}
-
-.logo-wrapper:after {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  border-radius: 50%;
+  &::before {
+    position: absolute;
+    content: "";
+    width: 150%;
+    height: 3.5rem;
+    left: -25%;
+    top: 0;
+    background: #eae7dc;
+    z-index: -1;
+  }
+  &::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+  }
 }
 
 header {
@@ -128,14 +126,14 @@ header {
     height: 90px;
     width: 90px;
     padding-top: 1rem;
-    /*     box-shadow: 0 19px 7px 0 rgba(0, 0, 0, 0.1); */
+    box-shadow: 0 19px 7px 0 rgba(0, 0, 0, 0.1);
+    &::before {
+      top: -2px;
+      height: 4rem;
+    }
   }
   .shadow-dummy {
     box-shadow: 0 27px 8px 0 rgba(0, 0, 0, 0.1);
-  }
-  .logo-wrapper:before {
-    top: -2px;
-    height: 4rem;
   }
 
   header {

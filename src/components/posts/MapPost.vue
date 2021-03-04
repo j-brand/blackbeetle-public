@@ -1,5 +1,4 @@
 <template>
-  <p>Map Post</p>
   <GoogleMap class="w-full h-112" :zoom="content.zoomlevel" v-slot="{ map }">
     <GoogleMapMarker v-for="(marker, index) in content.coordinates" :key="index" :position="marker.position" :label="marker.id" :map="map"></GoogleMapMarker>
     <GoogleMapBounds :coordinates="content.coordinates" :map="map"></GoogleMapBounds>

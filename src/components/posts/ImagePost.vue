@@ -1,7 +1,12 @@
 <template>
-  <div class="swiper-container w-full h-auto">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide w-full" v-for="(image, index) in post.images" :key="index"><img v-lazy="getImgObj(image, '_aswipe')" loading="lazy" /></div>
+  <div class="swiper-container w-full h-auto" ref="swiperEle">
+    <div class="swiper-wrapper" ref="galleryEle">
+      <div class="swiper-slide w-full" v-for="(image, index) in post.images" :key="index">
+        <a :href="getImgPath(image, '_large')" :data-sub-html="'#caption_' + image.id">
+          <img v-lazy="getImgObj(image, '_aswipe')" loading="lazy" />
+          <div class="hidden" :id="'caption_' + image.id">{{ image.description }}</div>
+        </a>
+      </div>
     </div>
 
     <div class="swiper-pagination"></div>
@@ -13,27 +18,46 @@
 
 <script lang="ts">
 import { Post } from "@/common/models/post";
-import { onMounted, PropType } from "vue";
+import { ref, onMounted, PropType } from "vue";
 
 import helpers from "@/common/helpers";
-import Swiper from "swiper/bundle";
-// Import Swiper styles
-import "swiper/swiper.scss";
-import "swiper/components/navigation/navigation.scss";
-import "swiper/components/pagination/pagination.scss";
-import "swiper/components/scrollbar/scrollbar.scss";
 
+//Lightgallery Imports
+import "lightgallery.js";
+import "lg-fullscreen.js";
+import "lg-autoplay.js";
+import "lightgallery.js/src/sass/lightgallery.scss";
+
+// Swiper Js Imports
+import Swiper from "swiper/bundle";
+import "@/assets/style/scss/swiper.scss";
+
+declare const window: any;
 export default {
   name: "ImagePost",
   props: {
     post: { type: Object as PropType<Post>, required: true },
   },
   setup() {
-    const { getImgObj } = helpers();
+    const galleryEle = ref<HTMLElement | null>(null);
+    const swiperEle = ref<HTMLElement | any>();
+    const swiperRef = ref();
+    const { getImgObj, getImgPath } = helpers();
+
+    function initGallery() {
+      window.lightGallery(galleryEle.value, {
+        download: false,
+        selector: ".swiper-slide a",
+      });
+
+      galleryEle.value?.addEventListener("onAfterSlide", function(event: any) {
+        swiperRef.value.slideTo(event.detail.index);
+      });
+    }
+
     function initSwiper() {
-      const swiper = new Swiper(".swiper-container", {
-        loop: true,
-        observer: true,
+      swiperRef.value = new Swiper(swiperEle.value, {
+        autoHeight: true,
         pagination: {
           el: ".swiper-pagination",
           dynamicBullets: true,
@@ -45,8 +69,35 @@ export default {
         },
       });
     }
-    onMounted(initSwiper);
-    return { getImgObj };
+
+    onMounted(() => {
+      initSwiper();
+      setTimeout(function() {
+        initGallery();
+      }, 300);
+    });
+
+    return { getImgObj, getImgPath, galleryEle, swiperEle };
   },
 };
 </script>
+
+<style lang="scss">
+.swiper-button-next,
+.swiper-button-prev {
+  height: 100%;
+  top: 1.5rem;
+  width: 50px;
+  &:focus {
+    outline: none;
+  }
+}
+
+.swiper-button-next {
+  right: 0;
+}
+
+.swiper-button-prev {
+  left: 0;
+}
+</style>

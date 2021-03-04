@@ -8,8 +8,11 @@ const ApiService = {
   },
 
   get(endpoint: string, slug = "") {
-    console.log(`${endpoint}/${slug}`);
     return axios.get(`${endpoint}/${slug}`);
+  },
+
+  post(endpoint: string, payload) {
+    return axios.post(`${endpoint}`, payload);
   },
 
   /*   

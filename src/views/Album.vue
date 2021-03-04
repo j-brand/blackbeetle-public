@@ -23,14 +23,16 @@
 </template>
 
 <script>
-import { ref, onMounted, computed } from "vue";
+import { onMounted, computed } from "vue";
 import { useRoute } from "vue-router";
 
 import { ActionTypes } from "@/store/action.type";
 import { useStore } from "vuex";
 
 import "lightgallery.js";
-import "lightgallery.js/dist/css/lightgallery.css";
+import "lg-fullscreen.js";
+import "lg-autoplay.js";
+import "lightgallery.js/src/sass/lightgallery.scss";
 
 import helpers from "@/common/helpers";
 
@@ -55,6 +57,7 @@ export default {
     function initGallery() {
       window.lightGallery(document.getElementById("lightgallery"), {
         thumbnail: true,
+        download:false,
         selector: "a",
       });
     }

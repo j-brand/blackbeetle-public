@@ -12,6 +12,8 @@
     "autoprefixer": "^9.8.6",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "lg-autoplay.js": "^1.2.0",
+    "lg-fullscreen.js": "^1.2.0",
     "lightgallery.js": "^1.4.0",
     "postcss": "^7.0.35",
     "swiper": "^6.5.0",

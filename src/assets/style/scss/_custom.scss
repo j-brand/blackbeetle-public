@@ -1,19 +1,18 @@
 html,
 body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 #app {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .content {
-    flex: 1 0 auto;
-
+  flex: 1 0 auto;
 }
 
 /* .footer {
@@ -22,56 +21,56 @@ body {
 }
  */
 button:focus {
-    outline: 0;
+  outline: 0;
 }
 
 .html-post img {
-    height: auto !important;
+  height: auto !important;
 }
 
 /*Album View*/
 .masonry {
-    columns: 5 200px;
-    column-gap: 0.5rem;
-    .item {
-        width: 150px;
-        margin: 0 0.5rem 0.5rem 0;
-        display: inline-block;
-        width: 100%;
-        text-align: center;
-        font-family: system-ui;
-        font-weight: 900;
-        font-size: 2rem;
+  columns: 5 200px;
+  column-gap: 0.5rem;
+  .item {
+    width: 150px;
+    margin: 0 0.5rem 0.5rem 0;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-family: system-ui;
+    font-weight: 900;
+    font-size: 2rem;
+  }
+  @for $i from 1 through 36 {
+    .item:nth-child(#{$i}) {
+      $h: (random(400) + 100) + px;
+      height: auto;
+      line-height: $h;
     }
-    @for $i from 1 through 36 {
-        .item:nth-child(#{$i}) {
-            $h: (random(400) + 100) + px;
-            height: auto;
-            line-height: $h;
-        }
-    }
+  }
 }
 
 .my-gallery {
-    columns: 5 200px;
-    column-gap: 0.6rem;
-    figure {
-        width: 150px;
-        margin: 0 0.25rem 0.25rem 0;
-        display: inline-block;
-        width: 100%;
-        text-align: center;
-        font-family: system-ui;
-        font-weight: 900;
-        font-size: 2rem;
+  columns: 5 200px;
+  column-gap: 0.6rem;
+  figure {
+    width: 150px;
+    margin: 0 0.25rem 0.25rem 0;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-family: system-ui;
+    font-weight: 900;
+    font-size: 2rem;
+  }
+  @for $i from 1 through 36 {
+    figure:nth-child(#{$i}) {
+      $h: (random(400) + 100) + px;
+      height: auto;
+      line-height: $h;
     }
-    @for $i from 1 through 36 {
-        figure:nth-child(#{$i}) {
-            $h: (random(400) + 100) + px;
-            height: auto;
-            line-height: $h;
-        }
-    }
+  }
 }
 
 /*Album View END*/
@@ -132,58 +131,102 @@ button:focus {
 /*STORY VIEW END*/
 
 .square-opacity {
-    background: rgb(0, 0, 0, 0.3);
+  background: rgb(0, 0, 0, 0.3);
 }
 
 .translate-x-50 {
-    transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
 .translate-y-50 {
-    transform: translateY(50%);
+  transform: translateY(50%);
 }
 
 .translate-y-25 {
-    transform: translateY(25%);
+  transform: translateY(25%);
 }
 
 .trans-05 {
-    transition: 0.5s;
+  transition: 0.5s;
 }
 
 .trans-max-h-05 {
-    transition: max-height 1s;
+  transition: max-height 1s;
 }
 
 .anaglyph {
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
-    border: none;
-    color: #333333;
-    -o-text-overflow: clip;
-    text-overflow: clip;
-    letter-spacing: 3px;
-    text-shadow: -3px 0 1px #1ef2f1, 3px 0 1px #f6050a;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  border: none;
+  color: #333333;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  letter-spacing: 3px;
+  text-shadow: -3px 0 1px #1ef2f1, 3px 0 1px #f6050a;
 }
 
 /*LAZYLOAD IMAGE BLUR*/
 img[lazy="loading"] {
-    filter: blur(25px);
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
+  filter: blur(25px);
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
 }
 
 img[lazy="loaded"] {
-    filter: blur(0);
-    transition: filter 0.5s 0.5s ease-in-out;
+  filter: blur(0);
+  transition: filter 0.5s 0.5s ease-in-out;
 }
 
 /*VUE TRANSITION CLASSES*/
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity 0.5s;
+  transition: opacity 0.5s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    opacity: 0;
+  opacity: 0;
+}
+
+/*NEW START*/
+
+/*LIGHT GALLERY - START*/
+
+.lg-next:before,
+.lg-prev:after {
+  font-family: swiper-icons !important;
+  content: "next" !important;
+  font-size: xx-large;
+}
+.lg-next:before {
+  content: "next" !important;
+}
+.lg-prev:after {
+  content: "prev" !important;
+}
+/*LIGHT GALLERY - END*/
+
+video:focus {
+  outline: none;
+}
+
+@responsive {
+  .text-shadow {
+    text-shadow: 0px 0px 1px rgb(0 0 0 / 20%), 0px 0px 1px rgb(1 0 5 / 10%);
+  }
+
+  .text-shadow-sm {
+    text-shadow: 1px 1px 3px rgb(36 37 47 / 25%);
+  }
+
+  .text-shadow-md {
+    text-shadow: 0px 1px 2px rgb(30 29 39 / 19%), 1px 2px 4px rgb(54 64 147 / 18%);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 3px 3px 6px rgb(0 0 0 / 26%), 0 0 5px rgb(15 3 86 / 22%);
+  }
+
+  .text-shadow-none {
+    text-shadow: none;
+  }
 }

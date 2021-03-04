@@ -1,8 +1,11 @@
 <template>
   <main class="pb-40 pt-40 container m-auto">
     <div v-if="storys.length >= 0" class="flex flex-col justify-center items-center">
-      <router-link :to="{ name: 'story', params: { slug: story.slug } }" v-for="(story, index) in storys" :key="index" class="mb-6">
-        <img :height="500" :width="1000" v-lazy="getImgObj(story.title_image, '_sthn')" loading="lazy" />
+      <router-link :to="{ name: 'story', params: { slug: story.slug } }" v-for="(story, index) in storys" :key="index" class="mb-6 px-5 md:px-0">
+        <div class="relative">
+          <h1 class="text-4xl absolute text-bb-lighter font-bold z-10 uppercase bottom-20 left-24 text-shadow-lg">{{ story.title }}</h1>
+          <img :height="500" :width="1000" v-lazy="getImgObj(story.title_image, '_sthn')" loading="lazy" class="rounded-md" />
+        </div>
       </router-link>
     </div>
   </main>
