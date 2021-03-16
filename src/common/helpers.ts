@@ -13,9 +13,20 @@ export default function() {
     };
   }
 
-  function formatDate(date) {
+  function getExcerpt(text: string, length: number): string {
+    let excerpt = text;
+    if (excerpt.length >= length) {
+      excerpt = excerpt.substring(0, length) + "...";
+    }
+    return excerpt;
+  }
+
+  function formatDate(date: string, short?: boolean) {
     //format date to t.m.Y
-    const months: string[] = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+    let months: string[] = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+    if (short) {
+      months = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"];
+    }
     const d: Date = new Date(date);
     const day = d.getDate();
     const month = d.getMonth();
@@ -45,5 +56,5 @@ export default function() {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
   }
 
-  return { getImgObj, getImgPath, formatDate, getCookie, setCookie };
+  return { getImgObj, getImgPath, formatDate, getCookie, setCookie, getExcerpt };
 }

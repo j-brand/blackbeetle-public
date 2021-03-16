@@ -5,6 +5,7 @@
         <div class="flex flex-col justify-center min-h-screen mx-5 lg:mx-0">
           <h1 class="text-4xl text-center uppercase tracking-widest font-semibold">{{ story.title }}</h1>
           <span class="text-2xl text-center mt-10" v-html="story.description"></span>
+          <StoryImage :storySlug="story.slug" />
         </div>
         <div class="flex flex-row justify-end mx-5 lg:mx-0">
           <!--<button
@@ -58,7 +59,9 @@ import ImagePost from "@/components/posts/ImagePost.vue";
 import MapPost from "@/components/posts/MapPost.vue";
 import VideoPost from "@/components/posts/VideoPost.vue";
 import Pagination from "@/components/Pagination.vue";
+
 import StoryNotoficationSubscription from "@/components/StoryNotificationSubscription.vue";
+import StoryImage from "@/components/StoryHeaderImage.vue";
 export default {
   components: {
     HtmlPost,
@@ -67,6 +70,7 @@ export default {
     VideoPost,
     Pagination,
     //StoryNotoficationSubscription,
+    StoryImage,
   },
   setup() {
     const route = useRoute();

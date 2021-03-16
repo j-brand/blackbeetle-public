@@ -1,5 +1,5 @@
 module.exports = {
-  purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
@@ -63,6 +63,9 @@ module.exports = {
       },
       flex: {
         "3": "3 3 0%",
+      },
+      rotate: {
+        "-10": "-10deg",
       },
     },
     fontFamily: {

@@ -37,6 +37,16 @@ const routes: Array<RouteRecordRaw> = [
     name: "gallery",
     component: () => import("../views/Gallery.vue"),
   },
+  {
+    path: "/privacy-policy",
+    name: "privacy-policy",
+    component: () => import("../views/Privacy.vue"),
+  },
+  {
+    path: "/imprint",
+    name: "imprint",
+    component: () => import("../views/Imprint.vue"),
+  },
 ];
 
 const router = createRouter({

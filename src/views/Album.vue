@@ -2,10 +2,11 @@
   <main class="mb-16 mt-40">
     <div v-if="album" class="container mx-auto mb-24 px-5 md:px-5 md:px-0 lg:px-0 flex flex-col justify-between">
       <span class="text-lg flex justify-end mb-10 md:mb-0">
-        {{ formatDate(album.start_date) }} -
-        {{ formatDate(album.end_date) }}
+        {{ formatDate(album.start_date, true) }} -
+        {{ formatDate(album.end_date, true) }}
       </span>
-      <div>
+
+      <div class=" max-w-screen-lg">
         <h2 class="text-3xl">{{ album.title }}</h2>
         <p class="text-lg">{{ album.description }}</p>
       </div>
@@ -43,16 +44,7 @@ export default {
     const store = useStore();
     const route = useRoute();
     
-    const { getImgObj, getImgPath } = helpers();
-
-    function formatDate(date) {
-      const months = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"];
-      const d = new Date(date);
-      const day = d.getDate();
-      const month = d.getMonth();
-      const year = d.getFullYear();
-      return day + "." + months[month] + "." + year;
-    }
+    const { getImgObj, getImgPath,formatDate } = helpers();
 
     function initGallery() {
       window.lightGallery(document.getElementById("lightgallery"), {

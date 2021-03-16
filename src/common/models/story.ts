@@ -7,5 +7,7 @@ export interface Story {
   path: string;
   slug: string;
   title_image: Image;
+  created_at: Date;
+  posts_count: number;
   posts?: Post;
 }

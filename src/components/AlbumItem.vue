@@ -12,7 +12,7 @@
           {{ album.title }}
         </div>
         <p class="text-bb-lighter text-base">
-          {{ getExcerpt() }}
+          {{ getExcerpt(album.description, 100) }}
         </p>
       </div>
     </router-link>
@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { PropType, computed } from "vue";
+import { PropType } from "vue";
 
 import { Album } from "@/common/models/album";
 
@@ -34,15 +34,7 @@ export default {
   },
 
   setup(props) {
-    const { getImgObj } = helpers();
-
-    function getExcerpt(): string {
-      let description = props.album.description;
-      if (description.length >= 100) {
-        description = description.substring(0, 97) + "...";
-      }
-      return description;
-    }
+    const { getImgObj, getExcerpt } = helpers();
 
     return { getExcerpt, getImgObj };
   },
