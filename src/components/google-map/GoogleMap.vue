@@ -4,13 +4,17 @@
     <slot :map="map" />
   </template>
 </template>
+
 <script lang="ts">
 import { onMounted } from "@vue/runtime-core";
-import { Loader } from "@googlemaps/js-api-loader";
 import { ref } from "vue";
+
 import { environment } from "@/common/envionment";
+
+import { Loader } from "@googlemaps/js-api-loader";
 import { IGoogleMapsAPI, IMap } from "./gmap.types";
 import { mapStyles } from "./map-conf/gMapStyle";
+
 export default {
   name: "GoogleMap",
   props: {

@@ -40,7 +40,7 @@ export default {
   },
   setup() {
     const galleryEle = ref<HTMLElement | null>(null);
-    const swiperEle = ref<HTMLElement | any>();
+    const swiperEle = ref<HTMLElement | any>(null);
     const swiperRef = ref();
     const { getImgObj, getImgPath } = helpers();
 

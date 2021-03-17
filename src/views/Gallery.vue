@@ -1,5 +1,5 @@
 <template>
-  <main class="pb-40 pt-40 container m-auto">
+  <main class="pt-40">
     <div v-if="albums.length >= 0" class="flex flex-col justify-center items-center">
       <router-link :to="{ name: 'album', params: { slug: album.slug } }" v-for="(album, index) in albums" :key="index" class="mb-6 px-5 md:px-0">
         <ImageCardLarge :resource="album" :type="'album'" />

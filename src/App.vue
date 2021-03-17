@@ -14,7 +14,6 @@ export default {
     TheFooter,
   },
   setup() {
-    
     // Set specific favicon if browser is in dark mode
     function setFavicon() {
       if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
@@ -31,11 +30,7 @@ export default {
         }
       }
     }
-          window.addEventListener("DOMContentLoaded", setFavicon);
+    window.addEventListener("DOMContentLoaded", setFavicon);
   },
 };
 </script>
-
-<style lang="scss">
-//@import "./assets/style/scss/_fonts.scss";
-</style>

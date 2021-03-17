@@ -1,5 +1,5 @@
 <template>
-  <div id="circles" class="relative overflow-hidden w-full h-screen">
+  <div id="circles" class="relative overflow-hidden">
     <img id="img_center" class="top-0 left-0 right-0 bottom-0 absolute h-72 md:h-116  m-auto" src="@/assets/img/Mandala_01.png" alt="Alice im Wunderland und Flamingo" />
     <img class="top-0 left-0 right-0 bottom-0 absolute h-24 md:h-36 m-auto" src="@/assets/img/alice_flamingo.svg" alt="Alice im Wunderland und Flamingo" />
     <svg id="circle_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">

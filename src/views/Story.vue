@@ -29,15 +29,15 @@
           </button>
         </div>
       </div>
-      <Pagination v-if="story.posts.current_page > 1" :offset="3" :pagination="story.posts" @paginate="fetchStory" class="mt-44 mb-10"></Pagination>
+      <Pagination v-if="story.posts.current_page > 1" :offset="3" :pagination="story.posts" @paginate="fetchStory" class="mt-44 mb-10" />
       <template v-for="(post, index) in story.posts.data" :key="index">
         <hr class="w-1/4 my-10 mx-auto border-bb-charcole h-px" v-if="index != story.posts.length - 1 && index != 0" />
-        <HtmlPost v-if="post.type == 'html'" :post="post"></HtmlPost>
-        <ImagePost v-else-if="post.type == 'image'" :post="post" class="rounded-md"></ImagePost>
-        <MapPost v-else-if="post.type == 'map'" :post="post" class="rounded-md"></MapPost>
-        <VideoPost v-else-if="post.type == 'video'" :post="post" class="rounded-md"></VideoPost>
+        <HtmlPost v-if="post.type == 'html'" :post="post" />
+        <ImagePost v-else-if="post.type == 'image'" :post="post" class="rounded-md" />
+        <MapPost v-else-if="post.type == 'map'" :post="post" class="rounded-md" />
+        <VideoPost v-else-if="post.type == 'video'" :post="post" class="rounded-md" />
       </template>
-      <Pagination :offset="3" :pagination="story.posts" @paginate="fetchStory" class="mt-10"></Pagination>
+      <Pagination :offset="3" :pagination="story.posts" @paginate="fetchStory" class="mt-10" />
     </div>
     <!--<transition name="fade">
       <StoryNotoficationSubscription class="fixed top-1/4 w-full h-full" v-if="showSub" :storyID="story.id" @close="showSub = !showSub"></StoryNotoficationSubscription>
@@ -79,8 +79,8 @@ export default {
     const showSub = ref(false);
     const { getImgObj, getCookie, setCookie } = helpers();
 
-    function getOrder() {
-      const cookie = getCookie(route.params.slug);
+    function getOrder(): string {
+      const cookie = getCookie(route.params.slug.toString());
       return cookie ? cookie : "asc";
     }
 
@@ -103,7 +103,7 @@ export default {
       window.scrollTo(0, 0);
     }
     function toggleOrder() {
-      setCookie(route.params.slug, getOrder() == "asc" ? "desc" : "asc", 365);
+      setCookie(route.params.slug.toString(), getOrder() == "asc" ? "desc" : "asc", 365);
       fetchStory();
     }
 

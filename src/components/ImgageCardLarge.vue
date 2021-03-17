@@ -45,7 +45,6 @@ export default {
   },
   setup() {
     const { getExcerpt, formatDate, getImgObj } = helpers();
-
     return { getExcerpt, formatDate, getImgObj };
   },
 };

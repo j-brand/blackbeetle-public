@@ -1,3 +1,6 @@
+$footer-height: 100px;
+$footer-height-small: 124px;
+
 html,
 body {
   height: 100%;
@@ -5,153 +8,20 @@ body {
   padding: 0;
 }
 
-#app {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+main {
+  min-height: calc(100vh - #{$footer-height-small});
+  @screen md {
+    min-height: calc(100vh - #{$footer-height});
+  }
 }
 
-.content {
-  flex: 1 0 auto;
-}
-
-/* .footer {
-    flex-shrink: 0;
-    padding: 20px;
-}
- */
-button:focus {
+button:focus,
+video:focus {
   outline: 0;
 }
 
 .html-post img {
   height: auto !important;
-}
-
-/*Album View*/
-.masonry {
-  columns: 5 200px;
-  column-gap: 0.5rem;
-  .item {
-    width: 150px;
-    margin: 0 0.5rem 0.5rem 0;
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-    font-family: system-ui;
-    font-weight: 900;
-    font-size: 2rem;
-  }
-  @for $i from 1 through 36 {
-    .item:nth-child(#{$i}) {
-      $h: (random(400) + 100) + px;
-      height: auto;
-      line-height: $h;
-    }
-  }
-}
-
-.my-gallery {
-  columns: 5 200px;
-  column-gap: 0.6rem;
-  figure {
-    width: 150px;
-    margin: 0 0.25rem 0.25rem 0;
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-    font-family: system-ui;
-    font-weight: 900;
-    font-size: 2rem;
-  }
-  @for $i from 1 through 36 {
-    figure:nth-child(#{$i}) {
-      $h: (random(400) + 100) + px;
-      height: auto;
-      line-height: $h;
-    }
-  }
-}
-
-/*Album View END*/
-
-/*STORY VIEW*/
-
-/* #toggle-order {
-    border: none;
-    color: theme("colors.bb-charcole");
-    padding: 5px 10px;
-    font-size: 1.125rem;
-    cursor: pointer;
-    border: 1px solid theme("colors.bb-charcole");
-    &:hover {
-        color: theme("colors.bb-lighter");
-        .ico-sort {
-            background: url("/images/history-light.svg") no-repeat top left;
-            background-size: contain;
-            cursor: pointer;
-            display: inline-block;
-            height: 22px;
-            width: 22px;
-            vertical-align: sub;
-        }
-    }
-    .ico-sort {
-        background: url("/images/history-dark.svg") no-repeat top left;
-        background-size: contain;
-        cursor: pointer;
-        display: inline-block;
-        height: 22px;
-        width: 22px;
-        vertical-align: sub;
-    }
-} */
-/* #subscribe {
-    .ico-newsletter {
-        background: url("/images/mail-dark.svg") no-repeat top left;
-        background-size: contain;
-        cursor: pointer;
-        display: inline-block;
-        height: 22px;
-        width: 22px;
-        vertical-align: sub;
-    }
-    &:hover {
-        .ico-newsletter {
-            background: url("/images/mail-light.svg") no-repeat top left;
-            background-size: contain;
-            cursor: pointer;
-            display: inline-block;
-            height: 22px;
-            width: 22px;
-            vertical-align: sub;
-        }
-    }
-} */
-/*STORY VIEW END*/
-
-.square-opacity {
-  background: rgb(0, 0, 0, 0.3);
-}
-
-.translate-x-50 {
-  transform: translateX(-50%);
-}
-
-.translate-y-50 {
-  transform: translateY(50%);
-}
-
-.translate-y-25 {
-  transform: translateY(25%);
-}
-
-.trans-05 {
-  transition: 0.5s;
-}
-
-.trans-max-h-05 {
-  transition: max-height 1s;
 }
 
 .anaglyph {
@@ -187,8 +57,6 @@ img[lazy="loaded"] {
   opacity: 0;
 }
 
-/*NEW START*/
-
 /*LIGHT GALLERY - START*/
 
 .lg-next:before,
@@ -203,11 +71,8 @@ img[lazy="loaded"] {
 .lg-prev:after {
   content: "prev" !important;
 }
-/*LIGHT GALLERY - END*/
 
-video:focus {
-  outline: none;
-}
+/*LIGHT GALLERY - END*/
 
 @responsive {
   .text-shadow {

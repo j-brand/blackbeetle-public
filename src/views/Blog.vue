@@ -1,5 +1,5 @@
 <template>
-  <main class="pb-40 pt-40 container m-auto">
+  <main class="pt-40">
     <div v-if="storys.length >= 0" class="flex flex-col justify-center items-center">
       <router-link :to="{ name: 'story', params: { slug: story.slug } }" v-for="(story, index) in storys" :key="index" class="mb-6 px-5 md:px-0">
         <ImageCardLarge :resource="story" :type="'story'" />

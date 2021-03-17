@@ -2,7 +2,7 @@ import { environment } from "./envionment";
 import { Image } from "./models/image";
 
 export default function() {
-  function getImgPath(image: Image, variant: string) {
+  function getImgPath(image: Image, variant: string): string {
     return `${environment.publicUrl}/storage/${image.path}${image.title}${variant}.${image.extension}`;
   }
 
@@ -21,7 +21,7 @@ export default function() {
     return excerpt;
   }
 
-  function formatDate(date: string, short?: boolean) {
+  function formatDate(date: string, short?: boolean): string {
     //format date to t.m.Y
     let months: string[] = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
     if (short) {
@@ -34,7 +34,7 @@ export default function() {
     return day + "." + months[month] + "." + year;
   }
 
-  function getCookie(cname) {
+  function getCookie(cname: string) {
     const name = cname + "=";
     const ca = document.cookie.split(";");
     for (let i = 0; i < ca.length; i++) {
@@ -49,7 +49,7 @@ export default function() {
     return false;
   }
 
-  function setCookie(cname, cvalue, exdays) {
+  function setCookie(cname: string, cvalue: string, exdays: number) {
     const d = new Date();
     d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
     const expires = "expires=" + d.toUTCString();

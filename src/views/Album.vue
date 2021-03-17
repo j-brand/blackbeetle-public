@@ -1,13 +1,13 @@
 <template>
-  <main class="mb-16 mt-40">
-    <div v-if="album" class="container mx-auto mb-24 px-5 md:px-5 md:px-0 lg:px-0 flex flex-col justify-between">
+  <main class="pt-40">
+    <div v-if="album" class="container mx-auto mb-24 px-5 md:px-0 lg:px-0 flex flex-col justify-between">
       <span class="text-lg flex justify-end mb-10 md:mb-0">
         {{ formatDate(album.start_date, true) }} -
         {{ formatDate(album.end_date, true) }}
       </span>
 
       <div class=" max-w-screen-lg">
-        <h2 class="text-3xl">{{ album.title }}</h2>
+        <h2 class="text-3xl mb-3">{{ album.title }}</h2>
         <p class="text-lg">{{ album.description }}</p>
       </div>
     </div>
@@ -23,7 +23,7 @@
   </main>
 </template>
 
-<script>
+<script lang="ts">
 import { onMounted, computed } from "vue";
 import { useRoute } from "vue-router";
 
@@ -36,30 +36,26 @@ import "lg-autoplay.js";
 import "lightgallery.js/src/sass/lightgallery.scss";
 
 import helpers from "@/common/helpers";
-
+declare const window: any;
 export default {
   name: "Album",
 
   setup() {
     const store = useStore();
     const route = useRoute();
-    
-    const { getImgObj, getImgPath,formatDate } = helpers();
 
-    function initGallery() {
+    const { getImgObj, getImgPath, formatDate } = helpers();
+
+    function initGallery(): any {
       window.lightGallery(document.getElementById("lightgallery"), {
         thumbnail: true,
-        download:false,
+        download: false,
         selector: "a",
       });
     }
 
     function fetchAlbum() {
-      store.dispatch(ActionTypes.GET_ALBUM_BY_SLUG, route.params.slug).then(
-        setTimeout(function() {
-          initGallery();
-        }, 500)
-      );
+      store.dispatch(ActionTypes.GET_ALBUM_BY_SLUG, route.params.slug).then(initGallery());
     }
 
     onMounted(() => {

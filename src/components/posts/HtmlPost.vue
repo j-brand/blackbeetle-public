@@ -17,7 +17,7 @@ export default {
   props: {
     post: { type: Object as PropType<Post>, required: true },
   },
-  setup(props) {
+  setup() {
     const formatDate = helpers();
     return formatDate;
   },

@@ -61,27 +61,26 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { ref } from "vue";
 export default {
   name: "TheHeader",
-  data() {
-    return {
-      isOpen: false,
-    };
-  },
-  methods: {
-    toggleNav() {
-      this.isOpen = !this.isOpen;
-      this.toggleScroll();
-    },
-    toggleScroll() {
-      const body = document.getElementById("app");
-      if (this.isOpen == true) {
+
+  setup() {
+    const isOpen = ref(false);
+    function toggleScroll() {
+      const body = document.body!;
+      if (isOpen.value == true && body) {
         body.style.setProperty("overflow-y", "hidden");
       } else {
         body.style.setProperty("overflow-y", "visible");
       }
-    },
+    }
+    function toggleNav() {
+      isOpen.value = !isOpen.value;
+      toggleScroll();
+    }
+    return { toggleNav, toggleScroll, isOpen };
   },
 };
 </script>
@@ -103,7 +102,7 @@ export default {
     height: 3.5rem;
     left: -25%;
     top: 0;
-    background: #eae7dc;
+    background: theme("colors.bb-lighter");
     z-index: -1;
   }
   &::after {
@@ -155,24 +154,13 @@ header {
   border: 0;
   margin: 0;
   overflow: visible;
-}
-.hamburger:hover {
-  opacity: 0.7;
-}
-.hamburger.is-active:hover {
-  opacity: 0.7;
-}
-.hamburger.is-active .hamburger-inner,
-.hamburger.is-active .hamburger-inner::before,
-.hamburger.is-active .hamburger-inner::after {
-  background-color: black;
-}
 
-.hamburger-box {
-  width: 30px;
-  height: 24px;
-  display: inline-block;
-  position: relative;
+  .hamburger-box {
+    width: 30px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+  }
 }
 
 .hamburger-inner {
@@ -185,7 +173,7 @@ header {
 .hamburger-inner::after {
   width: 30px;
   height: 3px;
-  background-color: black;
+  background-color: theme("colors.bb-charcole");
   border-radius: 4px;
   position: absolute;
   transition-property: transform;
@@ -206,30 +194,37 @@ header {
 /*
    * Spin
    */
-.hamburger--spin .hamburger-inner {
-  transition-duration: 0.22s;
-  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-}
-.hamburger--spin .hamburger-inner::before {
-  transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in;
-}
-.hamburger--spin .hamburger-inner::after {
-  transition: bottom 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
-}
 
-.hamburger--spin.is-active .hamburger-inner {
-  transform: rotate(225deg);
-  transition-delay: 0.12s;
-  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-.hamburger--spin.is-active .hamburger-inner::before {
-  top: 0;
-  opacity: 0;
-  transition: top 0.1s ease-out, opacity 0.1s 0.12s ease-out;
-}
-.hamburger--spin.is-active .hamburger-inner::after {
-  bottom: 0;
-  transform: rotate(-90deg);
-  transition: bottom 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+.hamburger--spin {
+  .hamburger-inner {
+    transition-duration: 0.22s;
+    transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+    &::before {
+      transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in;
+    }
+
+    &::after {
+      transition: bottom 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+  }
+  &.is-active {
+    .hamburger-inner {
+      transform: rotate(225deg);
+      transition-delay: 0.12s;
+      transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+      &::before {
+        top: 0;
+        opacity: 0;
+        transition: top 0.1s ease-out, opacity 0.1s 0.12s ease-out;
+      }
+
+      &::after {
+        bottom: 0;
+        transform: rotate(-90deg);
+        transition: bottom 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+    }
+  }
 }
 </style>
