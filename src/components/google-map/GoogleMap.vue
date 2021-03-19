@@ -9,7 +9,7 @@
 import { onMounted } from "@vue/runtime-core";
 import { ref } from "vue";
 
-import { environment } from "@/common/envionment";
+import { environment } from "@/common/environment";
 
 import { Loader } from "@googlemaps/js-api-loader";
 import { IGoogleMapsAPI, IMap } from "./gmap.types";

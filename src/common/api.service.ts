@@ -1,4 +1,4 @@
-import { environment } from "./envionment";
+import { environment } from "./environment";
 
 import axios from "axios";
 

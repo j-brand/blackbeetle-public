@@ -7,7 +7,7 @@ import store from "./store";
 import ApiService from "./common/api.service";
 import VueLoadNext from "vue-lazyload-next";
 
-import { environment } from "@/common/envionment";
+import { environment } from "@/common/enviornment";
 import "@/assets/style/index.css";
 
 

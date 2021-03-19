@@ -8,7 +8,7 @@
 <script lang="ts">
 import { Post } from "@/common/models/post";
 import { computed, PropType } from "vue";
-import { environment } from "@/common/envionment";
+import { environment } from "@/common/environment";
 
 export default {
   name: "VideoPost",

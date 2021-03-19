@@ -1,4 +1,4 @@
-import { environment } from "./envionment";
+import { environment } from "./environment";
 import { Image } from "./models/image";
 
 export default function() {
