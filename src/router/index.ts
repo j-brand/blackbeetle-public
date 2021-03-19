@@ -47,6 +47,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "imprint",
     component: () => import("../views/Imprint.vue"),
   },
+  {
+    path: "/poem",
+    name: "poem",
+    component: () => import("../views/Poem.vue"),
+  },
 ];
 
 const router = createRouter({
