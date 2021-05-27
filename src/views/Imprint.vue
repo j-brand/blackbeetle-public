@@ -1,6 +1,5 @@
 <template>
-  <main class="min-h-full pt-40 pb-24 px-5 md:px-0">
-    <div class="container mx-auto max-w-screen-md">
+    <div class="container mx-auto max-w-screen-md min-h-full pt-40 pb-24 px-5 md:px-0">
       <h1 class="text-3xl font-medium mb-5">Impressum</h1>
 
       <p>
@@ -22,5 +21,4 @@
         entfernen.
       </p>
     </div>
-  </main>
 </template>

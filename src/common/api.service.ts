@@ -1,14 +1,17 @@
-import { environment } from "./environment";
-
 import axios from "axios";
 
 const ApiService = {
   init() {
-    axios.defaults.baseURL = environment.apiUrl;
+    axios.defaults.baseURL = `${process.env.VUE_APP_PUBLIC_URL}/api`;
   },
 
   get(endpoint: string, slug = "") {
-    return axios.get(`${endpoint}/${slug}`);
+    
+    if (slug != "") {
+      slug = `/${slug}`;
+    }
+
+    return axios.get(`${endpoint}${slug}`);
   },
 
   post(endpoint: string, payload) {

@@ -1,11 +1,9 @@
 <template>
-  <main class="pt-40">
-    <div v-if="storys.length >= 0" class="flex flex-col justify-center items-center">
-      <router-link :to="{ name: 'story', params: { slug: story.slug } }" v-for="(story, index) in storys" :key="index" class="mb-6 px-5 md:px-0">
+    <div v-if="storys.length >= 0" class="flex flex-col justify-center items-center pt-40">
+      <router-link :to="{ name: 'story', params: { slug: story.slug } }" v-for="(story, index) in storys" :key="index" class="mb-6 px-5 lg:px-0">
         <ImageCardLarge :resource="story" :type="'story'" />
       </router-link>
     </div>
-  </main>
 </template>
 
 <script lang="ts">

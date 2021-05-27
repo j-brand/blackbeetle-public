@@ -20,6 +20,6 @@ export default {
 
 <style lang="scss" scoped>
 .gradient {
-background: linear-gradient(0deg, rgba(55,55,55,1) 0%, rgba(55,55,55,1) 50%, rgba(55,55,55,0.65) 60%, rgba(55,55,55,0) 70%);
+  background: linear-gradient(0deg, rgba(55, 55, 55, 1) 0%, rgba(55, 55, 55, 1) 50%, rgba(55, 55, 55, 0.65) 60%, rgba(55, 55, 55, 0) 70%);
 }
 </style>

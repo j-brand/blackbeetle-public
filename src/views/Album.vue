@@ -1,5 +1,5 @@
 <template>
-  <main class="pt-40 pb-10">
+  <div class="pt-40 pb-10">
     <div v-if="album" class="container mx-auto mb-24 px-5 md:px-0 lg:px-0 flex flex-col justify-between">
       <span class="text-lg flex justify-end mb-10 md:mb-0">
         {{ formatDate(album.start_date, true) }} -
@@ -20,7 +20,7 @@
         </a>
       </div>
     </div>
-  </main>
+  </div>
 </template>
 
 <script lang="ts">
@@ -55,7 +55,11 @@ export default {
     }
 
     function fetchAlbum() {
-      store.dispatch(ActionTypes.GET_ALBUM_BY_SLUG, route.params.slug).then(initGallery());
+      store.dispatch(ActionTypes.GET_ALBUM_BY_SLUG, route.params.slug).then(
+        window.setTimeout(() => {
+          initGallery();
+        }, 300)
+      );
     }
 
     onMounted(() => {

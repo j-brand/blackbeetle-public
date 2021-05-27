@@ -1,9 +1,8 @@
-import { environment } from "./environment";
 import { Image } from "./models/image";
 
 export default function() {
   function getImgPath(image: Image, variant: string): string {
-    return `${environment.publicUrl}/storage/${image.path}${image.title}${variant}.${image.extension}`;
+    return `${process.env.VUE_APP_PUBLIC_URL}/storage/${image.path}${image.title}${variant}.${image.extension}`;
   }
 
   function getImgObj(image: Image, variant: string) {

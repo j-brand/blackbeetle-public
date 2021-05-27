@@ -1,7 +1,5 @@
 <template>
-  <main>
     <BeetleAlice />
-  </main>
 </template>
 
 <script lang="ts">

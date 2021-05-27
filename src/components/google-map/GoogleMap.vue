@@ -9,8 +9,6 @@
 import { onMounted } from "@vue/runtime-core";
 import { ref } from "vue";
 
-import { environment } from "@/common/environment";
-
 import { Loader } from "@googlemaps/js-api-loader";
 import { IGoogleMapsAPI, IMap } from "./gmap.types";
 import { mapStyles } from "./map-conf/gMapStyle";
@@ -26,7 +24,7 @@ export default {
     const map = ref<IMap | null>(null);
     const api = ref<IGoogleMapsAPI | null>(null);
     const loader = new Loader({
-      apiKey: environment.googleApiKey,
+      apiKey: process.env.VUE_APP_GOOGLE_API_KEY,
       version: "weekly",
     });
 

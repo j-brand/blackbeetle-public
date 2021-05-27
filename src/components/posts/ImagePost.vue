@@ -30,7 +30,7 @@ import "lightgallery.js/src/sass/lightgallery.scss";
 
 // Swiper Js Imports
 import Swiper from "swiper/bundle";
-import "@/assets/style/scss/swiper.scss";
+import "@/assets/scss/swiper.scss";
 
 declare const window: any;
 export default {

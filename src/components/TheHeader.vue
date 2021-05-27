@@ -115,7 +115,6 @@ export default {
     border-radius: 50%;
   }
 }
-
 header {
   box-shadow: 0px 0px 11px 2px rgba(0, 0, 0, 0.1);
 }
@@ -139,7 +138,6 @@ header {
     box-shadow: 0px 0px 11px 2px rgba(0, 0, 0, 0.3);
   }
 }
-
 .hamburger {
   padding: 15px 15px;
   display: inline-block;
@@ -162,7 +160,6 @@ header {
     position: relative;
   }
 }
-
 .hamburger-inner {
   display: block;
   top: 50%;
@@ -191,10 +188,6 @@ header {
 .hamburger-inner::after {
   bottom: -10px;
 }
-/*
-   * Spin
-   */
-
 .hamburger--spin {
   .hamburger-inner {
     transition-duration: 0.22s;
@@ -226,5 +219,12 @@ header {
       }
     }
   }
+}
+.router-link-active {
+  border: none;
+  color: #333333;
+  text-overflow: clip;
+  letter-spacing: 3px;
+  text-shadow: -1px 0 1px #1ef2f1, 1px 0 1px #f6050a;
 }
 </style>
