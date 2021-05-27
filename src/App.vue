@@ -1,21 +1,26 @@
 <template>
-  <TheHeader />
-  <router-view />
+  <TheHeader></TheHeader>
+  <main>
+    <router-view />
+    <TheCookieNotice />
+  </main>
   <TheFooter />
 </template>
 
 <script>
 import TheHeader from "@/components/TheHeader";
 import TheFooter from "@/components/TheFooter";
+import TheCookieNotice from "@/components/TheCookieNotice";
 
 export default {
   components: {
     TheHeader,
     TheFooter,
+    TheCookieNotice
   },
   setup() {
     // Set specific favicon if browser is in dark mode
-    function setFavicon() {
+    /*     function setFavicon() {
       if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
         const favicon = document.querySelector("[data-dark]");
 
@@ -30,7 +35,7 @@ export default {
         }
       }
     }
-    window.addEventListener("DOMContentLoaded", setFavicon);
+    window.addEventListener("DOMContentLoaded", setFavicon); */
   },
 };
 </script>
