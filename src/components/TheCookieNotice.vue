@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-2/5 fixed bottom-0 gradient z-50">
+  <div v-show="hide" class="w-full h-2/5 fixed bottom-0 gradient z-50">
     <div class="mx-auto max-w-screen-md flex flex-col justify-end h-full pb-10 ">
       <h2 class="text-lg text-bb-light underline">Cookiehinweis</h2>
       <span class="text-bb-light"
@@ -7,14 +7,31 @@
         Cookies gespeichert werden und was es überhaupt mit diesen "Cookies" auf sich hat, können Sie in meiner
         <router-link to="/privacy-policy" class="underline hover:text-bb-red">Datenschutzerklärung</router-link> nachlesen.</span
       >
-      <button class="border border-bb-light text-bb-light block transition duration-300 ease-in-out hover:bg-bb-light hover:text-bb-charcole w-max py-1 px-3 mt-2">alles klar</button>
+      <button v-on:click="accept()" class="border border-bb-light text-bb-light block transition duration-300 ease-in-out hover:bg-bb-light hover:text-bb-charcole w-max py-1 px-3 mt-2">
+        alles klar
+      </button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import helpers from "@/common/helpers";
+import { ref } from 'vue';
+
 export default {
   name: "TheCookieNotice",
+  setup() {
+    const { setCookie } = helpers();
+    const hide = ref(true);
+
+
+    function accept() {
+      setCookie("cAccept", "true", 265);
+        hide.value = false
+    }
+
+    return { accept, hide };
+  },
 };
 </script>
 
