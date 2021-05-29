@@ -50,6 +50,7 @@ const router = createRouter({
 
 router.beforeEach((to, from) => {
   store.dispatch(ActionTypes.SET_MENU_STATE, false);
+  document.body.classList.remove("overflow-y-hidden");
 });
 
 export default router;
