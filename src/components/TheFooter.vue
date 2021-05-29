@@ -16,7 +16,7 @@
         </div>
 
         <div class="flex flex-row mb-3">
-          <router-link to="/privacy-policy" class="ml-4">Datemschutzerklärung</router-link>
+          <router-link to="/privacy-policy" class="ml-4">Datenschutzerklärung</router-link>
           <router-link to="/imprint" class="ml-4">Impressum</router-link>
         </div>
 
