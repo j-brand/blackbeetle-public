@@ -1,4 +1,6 @@
+import { ActionTypes } from "@/store/action.type";
 import { createRouter, createWebHistory } from "vue-router";
+import store from "../store";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -44,6 +46,10 @@ const router = createRouter({
       component: () => import(/* webpackChunkName: "comp-group" */ "../views/Poem.vue"),
     },
   ],
+});
+
+router.beforeEach((to, from) => {
+  store.dispatch(ActionTypes.SET_MENU_STATE, false);
 });
 
 export default router;

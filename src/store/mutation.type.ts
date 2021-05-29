@@ -3,4 +3,6 @@ export enum MutationTypes {
   SET_ALBUMS = "SET_ALBUMS",
   SET_STORY = "SET_STOY",
   SET_STORIES = "SET_STORIES",
+  SET_MENU_STATE = "SET_MENU_STATE",
+  TOGGLE_MENU = "TOGGLE_MENU",
 }

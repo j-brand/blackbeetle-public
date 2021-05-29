@@ -1,59 +1,26 @@
 <template>
   <div class="bg-bb-lighter">
     <div class="lg:hidden z-50 absolute top-0 right-0">
-      <button @click="toggleNav()" :class="isOpen ? 'is-active' : ''" class="hamburger block hamburger--spin" type="button">
+      <button @click="toggleNav()" :class="menuOpen ? 'is-active' : ''" class="hamburger block hamburger--spin" type="button">
         <span class="hamburger-box">
           <span class="hamburger-inner"></span>
         </span>
       </button>
     </div>
 
-    <header class="w-full flex flex-row-reverse absolute justify-between items-center duration-500 h-14 z-30 bg-bb-lighter" :class="isOpen ? 'mt-96' : 'mt-0'">
+    <header class="w-full flex flex-row-reverse absolute justify-between items-center duration-500 h-14 z-30 bg-bb-lighter" :class="menuOpen ? 'mt-96' : 'mt-0'">
       <a href="/" alt="home" class="mx-auto">
         <div id="logo-wrapper" class="w-24 left-0 right-0 z-10 logo-wrapper relative lg:absolute">
           <img class="bg-bb-lighter rounded-full p-3 " src="@/assets/img/logo.png" alt="Blackbeetle Logo" />
         </div>
       </a>
 
-      <nav :class="isOpen ? 'h-96' : 'h-0'" class="duration-500 w-full overflow-hidden fixed bg-bb-lighter top-0 lg:h-auto lg:relative lg:overflow-x-visible">
+      <nav :class="menuOpen ? 'h-96' : 'h-0'" class="duration-500 w-full overflow-hidden fixed bg-bb-lighter top-0 lg:h-auto lg:relative lg:overflow-x-visible">
         <div class="relative text-center text-bb-charcole top-1/4 lg:flex lg:justify-end">
-          <router-link
-            @click="
-              isOpen = false;
-              toggleScroll();
-            "
-            to="/"
-            exact
-            class="block w-full py-4 px-3 lg:w-auto lg:pb-5 lg:pt-6 lg:pr-6 text-xl lg:text-base uppercase font-medium"
-            >Home</router-link
-          >
-          <router-link
-            to="/about"
-            @click="
-              isOpen = false;
-              toggleScroll();
-            "
-            class="block w-full py-4 px-3 lg:w-auto lg:pb-5 lg:pt-6 lg:pr-6 text-xl lg:text-base uppercase font-medium"
-            >About</router-link
-          >
-          <router-link
-            to="/blog"
-            @click="
-              isOpen = false;
-              toggleScroll();
-            "
-            class="block w-full py-4 px-3 lg:w-auto lg:pb-5 lg:pt-6 lg:pr-6 text-xl lg:text-base uppercase font-medium"
-            >Blog</router-link
-          >
-          <router-link
-            to="/gallery"
-            @click="
-              isOpen = false;
-              toggleScroll();
-            "
-            class="block w-full py-4 px-3 lg:w-auto lg:pb-5 lg:pt-6 lg:pr-10 text-xl lg:text-base uppercase font-medium"
-            >Gallery</router-link
-          >
+          <router-link to="/" exact class="block w-full py-4 px-3 lg:w-auto lg:pb-5 lg:pt-6 lg:pr-6 text-xl lg:text-base uppercase font-medium">Home</router-link>
+          <router-link to="/about" class="block w-full py-4 px-3 lg:w-auto lg:pb-5 lg:pt-6 lg:pr-6 text-xl lg:text-base uppercase font-medium">About</router-link>
+          <router-link to="/blog" class="block w-full py-4 px-3 lg:w-auto lg:pb-5 lg:pt-6 lg:pr-6 text-xl lg:text-base uppercase font-medium">Blog</router-link>
+          <router-link to="/gallery" class="block w-full py-4 px-3 lg:w-auto lg:pb-5 lg:pt-6 lg:pr-10 text-xl lg:text-base uppercase font-medium">Gallery</router-link>
         </div>
       </nav>
     </header>
@@ -62,25 +29,30 @@
 </template>
 
 <script lang="ts">
-import { ref } from "vue";
+import { useStore } from "vuex";
+import { computed } from "vue";
+import { ActionTypes } from "@/store/action.type";
+
 export default {
   name: "TheHeader",
 
   setup() {
-    const isOpen = ref(false);
-    function toggleScroll() {
-      const body = document.body!;
-      if (isOpen.value == true && body) {
-        body.style.setProperty("overflow-y", "hidden");
+    const store = useStore();
+
+    function toggleNav() {
+      store.dispatch(ActionTypes.TOGGLE_MENU);
+
+      if (store.getters.menuOpen) {
+        document.body.classList.add("overflow-y-hidden");
       } else {
-        body.style.setProperty("overflow-y", "visible");
+        document.body.classList.remove("overflow-y-hidden");
       }
     }
-    function toggleNav() {
-      isOpen.value = !isOpen.value;
-      toggleScroll();
-    }
-    return { toggleNav, toggleScroll, isOpen };
+
+    return {
+      menuOpen: computed(() => store.getters.menuOpen),
+      toggleNav,
+    };
   },
 };
 </script>
