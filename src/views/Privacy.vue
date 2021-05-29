@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto max-w-screen-md pt-40 pb-24 px-5 md:px-0">
+  <div class="container mx-auto max-w-screen-md pt-40 pb-24 px-5 lg:px-0 break-words sm:overflow-x-hidden">
     <h1 class="text-3xl font-medium mb-5">Datenschutzerklärung</h1>
 
     <p class="mb-3 mt-5 text-lg">
@@ -117,23 +117,9 @@
       </thead>
       <tbody>
         <tr>
-          <td class="border pr-4 py-2">XSRF-TOKEN</td>
-          <td class="border px-4 py-2">
-            Sicherheits Token um Missbrauch zu vermeiden
-          </td>
-          <td class="border px-4 py-2">Session</td>
-        </tr>
-        <tr>
-          <td class="border pr-4 py-2">
-            cookie_accept
-          </td>
-          <td class="border px-4 py-2">Speicherung der Cookie Einstellungen (Cookie Banner wurde akzeptiert.)</td>
+          <td class="border pr-4 py-2">cAccept</td>
+          <td class="border px-4 py-2">Speicherung der Cookie- bzw. Datenschutzeinstellungen (Cookie Banner wurde akzeptiert.)</td>
           <td class="border px-4 py-2">365 Tage</td>
-        </tr>
-        <tr>
-          <td class="border pr-4 py-2">laravel_session</td>
-          <td class="border px-4 py-2">Session Cookie Laravel intern</td>
-          <td class="border px-4 py-2">Session</td>
         </tr>
         <tr>
           <td class="border pr-4 py-2">GESCHICHTEN TITEL*</td>
