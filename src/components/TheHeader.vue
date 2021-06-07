@@ -24,7 +24,7 @@
         </div>
       </nav>
     </header>
-    <div :class="isOpen ? 'h-116' : 'h-20'" class="shadow-dummy duration-500 w-20 lg:w-22 left-0 right-0 mx-auto absolute bg-bb-lighter rounded-full"></div>
+    <div :class="menuOpen ? 'h-116' : 'h-20'" class="shadow-dummy duration-500 w-20 lg:w-22 left-0 right-0 mx-auto absolute bg-bb-lighter rounded-full"></div>
   </div>
 </template>
 
