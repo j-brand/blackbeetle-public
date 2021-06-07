@@ -18,7 +18,7 @@
     "lg-fullscreen.js": "^1.2.0",
     "lightgallery.js": "^1.4.0",
     "postcss": "^7.0.35",
-    "swiper": "^6.5.0",
+    "swiper": "^6.7.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.0",
     "vue": "^3.0.0",
     "vue-class-component": "^8.0.0-0",
