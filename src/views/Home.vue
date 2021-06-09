@@ -1,5 +1,7 @@
 <template>
-    <BeetleAlice />
+  <div class="flex justify-center items-center w-full">
+    <BeetleAlice/>
+  </div>
 </template>
 
 <script lang="ts">
@@ -36,4 +38,5 @@ export default {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
 </style>
