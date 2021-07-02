@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "prod": "vue-cli-service build --mode production"
+    "prod": "vue-cli-service build --mode production",
+    "dev": "vue-cli-service build --mode development"
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.11.2",

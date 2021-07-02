@@ -8,6 +8,7 @@ node_modules
 
 # production env file
 .env.production
+.env.development
 
 # Log files
 npm-debug.log*
