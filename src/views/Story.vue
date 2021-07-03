@@ -1,5 +1,5 @@
 <template>
-  <transition name="fade">
+  <transition name="fadedelay">
     <Loader v-if="loading" />
   </transition>
   <div class="max-w-screen-md mx-auto flex flex-col justify-between pb-40" v-if="story.posts">
@@ -10,19 +10,19 @@
         <StoryImage :storySlug="story.slug" />
       </div>
       <div class="flex flex-row justify-end mx-5 lg:mx-0">
-        <!--<button
+        <button
           type="button"
           id="subscribe"
-          class="hover:bg-bb-charcole rounded-lg border border-solid border-bb-charcole transition duration-200 pt-2 pb-1 px-4 mr-3"
+          class="bb-btn bb-btn-dark bb-btn-lg mr-3"
           href="#"
           v-on:click="showSub = !showSub"
         >
           <span class="ico-newsletter"></span>
-        </button> -->
+        </button>
         <button
           type="button"
           v-on:click="toggleOrder()"
-          class="hover:bg-bb-charcole hover:text-bb-lighter rounded-lg border border-solid border-bb-charcole px-4 py-3 text-lg transition duration-200"
+          class="bb-btn bb-btn-dark bb-btn-lg"
           href="#"
           id="toggle-order"
         >
@@ -41,9 +41,9 @@
     </template>
     <Pagination :offset="3" :pagination="story.posts" @paginate="fetchStory" class="mt-10" />
   </div>
-  <!--<transition name="fade">
-      <StoryNotoficationSubscription class="fixed top-1/4 w-full h-full" v-if="showSub" :storyID="story.id" @close="showSub = !showSub"></StoryNotoficationSubscription>
-    </transition> -->
+  <transition name="fade">
+      <StoryNotoficationSubscription class="fixed top-32 md:top-1/4 w-full h-full" v-if="showSub" :storyID="story.id" @close="showSub = !showSub"></StoryNotoficationSubscription>
+    </transition>
 </template>
 
 <script lang="ts">
@@ -71,7 +71,7 @@ export default {
     MapPost,
     VideoPost,
     Pagination,
-    //StoryNotoficationSubscription,
+    StoryNotoficationSubscription,
     StoryImage,
     Loader,
   },
@@ -128,16 +128,16 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.fade-enter-active {
+.fadedelay-enter-active {
   transition: opacity 0.1s ease;
 }
-.fade-leave-active {
+.fadedelay-leave-active {
   transition: opacity 0.5s ease;
   transition-delay: 2s;
 }
 
-.fade-enter-from,
-.fade-leave-to {
+.fadedelay-enter-from,
+.fadedelay-leave-to {
   opacity: 0;
 }
 .ico-sort {

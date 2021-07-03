@@ -6,7 +6,6 @@ const ApiService = {
   },
 
   get(endpoint: string, slug = "") {
-    
     if (slug != "") {
       slug = `/${slug}`;
     }
@@ -15,7 +14,11 @@ const ApiService = {
   },
 
   post(endpoint: string, payload) {
-    return axios.post(`${endpoint}`, payload);
+    return axios.post(`${endpoint}`, payload).catch(function(e) {
+      if (e.response.data.message) {
+        return e.response;
+      }
+    });
   },
 };
 
