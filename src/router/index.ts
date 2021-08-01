@@ -34,6 +34,14 @@ const router = createRouter({
       component: () => import(/* webpackChunkName: "comp-group" */ "../views/Gallery.vue"),
     },
     {
+      path: "/verify-email/:token",
+      component: () => import(/* webpackChunkName: "comp-group" */ "../views/VerifyEmail.vue"),
+    },
+    {
+      path: "/resend-verification",
+      component: () => import(/* webpackChunkName: "comp-group" */ "../views/ResendVerification.vue"),
+    },
+    {
       path: "/privacy-policy",
       component: () => import(/* webpackChunkName: "comp-group" */ "../views/Privacy.vue"),
     },

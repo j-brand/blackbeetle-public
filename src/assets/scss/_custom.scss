@@ -18,7 +18,7 @@ main {
 //BUTTONS
 
 .bb-btn {
-  @apply rounded-lg outline-none transition duration-200 px-4 py-2;
+  @apply rounded-lg outline-none transition duration-200 px-3 py-2;
 
   &.bb-btn-lighter {
     @apply border border-bb-lighter border-solid;
@@ -37,9 +37,23 @@ main {
   }
 
   &.bb-btn-lg {
-    @apply text-lg py-3;
+    @apply text-lg py-2;
   }
 }
+
+//INPUT ELEMENT
+input{
+  @apply border border-solid rounded-lg bg-transparent text-xl p-1 px-2 outline-none;
+
+  &.bb-input-light{
+    @apply border-bb-lighter;
+  }
+  &.bb-input-dark{
+    @apply border-bb-charcole;
+
+  }
+}
+
 
 button:focus,
 video:focus {
@@ -74,14 +88,7 @@ img[lazy="loaded"] {
   transition: filter 0.5s 0.5s ease-in-out;
 }
 
-/*VUE TRANSITION CLASSES*/
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
+
 
 /*LIGHT GALLERY - START*/
 
@@ -97,6 +104,8 @@ img[lazy="loaded"] {
 .lg-prev:after {
   content: "prev" !important;
 }
+
+/*LIGHT GALLERY - END*/
 
 /*CUSTOM SCROLLBAR*/
 /* width */
@@ -118,8 +127,6 @@ img[lazy="loaded"] {
   border-radius: 0px;
 }
 
-/*LIGHT GALLERY - END*/
-
 @responsive {
   .text-shadow {
     text-shadow: 0px 0px 1px rgb(0 0 0 / 20%), 0px 0px 1px rgb(1 0 5 / 10%);
@@ -139,5 +146,55 @@ img[lazy="loaded"] {
 
   .text-shadow-none {
     text-shadow: none;
+  }
+}
+
+/*CUSTOM CHECKBOX*/
+/* Customize the label (the container) */
+
+.checkbox-wrapper {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  user-select: none;
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    
+    &:checked ~ .checkmark {
+      background-color: theme("colors.bb-charcole");
+      border: 1px solid theme("colors.bb-lighter");
+    }
+    
+    &:checked ~ .checkmark:after {
+      display: block;
+    }
+  }
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border-radius: 5px;
+    background-color:  theme("colors.bb-lighter");
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+      left: 6px;
+      top: 3px;
+      width: 6px;
+      height: 10px;
+      border: solid  theme("colors.bb-lighter");
+      border-width: 0 3px 3px 0;
+      transform: rotate(45deg);
+
+    }
   }
 }

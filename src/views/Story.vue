@@ -10,22 +10,10 @@
         <StoryImage :storySlug="story.slug" />
       </div>
       <div class="flex flex-row justify-end mx-5 lg:mx-0">
-        <button
-          type="button"
-          id="subscribe"
-          class="bb-btn bb-btn-dark bb-btn-lg mr-3"
-          href="#"
-          v-on:click="showSub = !showSub"
-        >
+        <button type="button" id="subscribe" class="bb-btn bb-btn-dark bb-btn-lg mr-3" href="#" v-on:click="showSub = !showSub">
           <span class="ico-newsletter"></span>
         </button>
-        <button
-          type="button"
-          v-on:click="toggleOrder()"
-          class="bb-btn bb-btn-dark bb-btn-lg"
-          href="#"
-          id="toggle-order"
-        >
+        <button type="button" v-on:click="toggleOrder()" class="bb-btn bb-btn-dark bb-btn-lg" href="#" id="toggle-order">
           <span class="ico-sort"></span>
           Sortierung umkehren
         </button>
@@ -37,13 +25,15 @@
       <HtmlPost v-if="post.type == 'html'" :post="post" />
       <ImagePost v-else-if="post.type == 'image'" :post="post" class="md:rounded-md" />
       <MapPost v-else-if="post.type == 'map'" :post="post" class="rounded-md" />
-      <VideoPost v-else-if="post.type == 'video'" :post="post" class="rounded-md" />
+      <VideoPost v-else-if="post.type == 'video'" :post="post" class="rounded-md mx-5 md:mx-0" />
     </template>
     <Pagination :offset="3" :pagination="story.posts" @paginate="fetchStory" class="mt-10" />
   </div>
   <transition name="fade">
-      <StoryNotoficationSubscription class="fixed top-32 md:top-1/4 w-full h-full" v-if="showSub" :storyID="story.id" @close="showSub = !showSub"></StoryNotoficationSubscription>
-    </transition>
+    <BlurBG v-if="showSub">
+      <StoryNotoficationSubscription v-click-outside="closeSub" :storyID="story.id" @close="showSub = !showSub" />
+    </BlurBG>
+  </transition>
 </template>
 
 <script lang="ts">
@@ -63,6 +53,7 @@ import Pagination from "@/components/Pagination.vue";
 import Loader from "@/components/Loader.vue";
 
 import StoryNotoficationSubscription from "@/components/StoryNotificationSubscription.vue";
+import BlurBG from "@/components/BlurBG.vue";
 import StoryImage from "@/components/StoryHeaderImage.vue";
 export default {
   components: {
@@ -72,6 +63,7 @@ export default {
     VideoPost,
     Pagination,
     StoryNotoficationSubscription,
+    BlurBG,
     StoryImage,
     Loader,
   },
@@ -82,6 +74,7 @@ export default {
     const showSub = ref(false);
     const { getImgObj, getCookie, setCookie } = helpers();
     const loading = ref(true);
+
     function getOrder(): string {
       const cookie = getCookie(route.params.slug.toString());
       return cookie ? cookie : "asc";
@@ -109,9 +102,14 @@ export default {
         window.scrollTo(0, 0);
       }, 200);
     }
+
     function toggleOrder() {
       setCookie(route.params.slug.toString(), getOrder() == "asc" ? "desc" : "asc", 365);
       fetchStory();
+    }
+
+    function closeSub() {
+        showSub.value = false;
     }
 
     onMounted(fetchStory);
@@ -123,23 +121,12 @@ export default {
       fetchStory,
       toggleOrder,
       loading,
+      closeSub,
     };
   },
 };
 </script>
 <style lang="scss" scoped>
-.fadedelay-enter-active {
-  transition: opacity 0.1s ease;
-}
-.fadedelay-leave-active {
-  transition: opacity 0.5s ease;
-  transition-delay: 2s;
-}
-
-.fadedelay-enter-from,
-.fadedelay-leave-to {
-  opacity: 0;
-}
 .ico-sort {
   background: url("~@/assets/img/icon_history_dark.svg") no-repeat top left;
   background-size: contain;

@@ -1,0 +1,24 @@
+/*VUE TRANSITION CLASSES*/
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+//Fade delay for story load time
+.fadedelay-enter-active {
+  transition: opacity 0.1s ease;
+}
+.fadedelay-leave-active {
+  transition: opacity 0.5s ease;
+  transition-delay: 2s;
+}
+
+.fadedelay-enter-from,
+.fadedelay-leave-to {
+  opacity: 0;
+}
