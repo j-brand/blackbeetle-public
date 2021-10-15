@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-full min-h-3/4-screen flex justify-center flex-col items-center px-10">
-    <span class="max-w-lg">{{ message }}</span>
+    <span class="max-w-lg text-xl">{{ message }}</span>
     <router-link to="/" exact class="mt-10 uppercase font-medium underline">zurück zur Startseite</router-link>
   </div>
 </template>

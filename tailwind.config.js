@@ -16,6 +16,7 @@ module.exports = {
         "bb-charcole": "#373737",
         "bb-light-red": "#E98074",
         "bb-red": "#E85A4F",
+        "bb-success": "#10B981",
       },
       zIndex: {
         "z-01": "1",

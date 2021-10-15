@@ -172,7 +172,7 @@ export default {
     }
 
     function startFirework() {
-      const tap = "ontouchstart" in window || navigator.msMaxTouchPoints ? "touchstart" : "mousedown";
+      const tap = "ontouchstart" in window || navigator.maxTouchPoints ? "touchstart" : "mousedown";
 
       const render = anime({
         duration: Infinity,

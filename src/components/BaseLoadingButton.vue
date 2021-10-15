@@ -1,11 +1,5 @@
 <template>
-  <button
-    :class="{
-      loading: loading,
-    }"
-    :disabled="loading"
-    type="button"
-  >
+  <button class="bb-btn bb-btn-dark relative" :class="{ loading: loading }" :disabled="loading" type="button">
     <slot>Submit</slot>
     <span class="spinner">
       <span></span>
@@ -18,7 +12,7 @@
 
 <script lang="ts">
 export default {
-  name: "LoadingButton",
+  name: "BaseLoadingButton",
   props: {
     loading: {
       type: Boolean,
@@ -35,26 +29,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/* reset */
-button {
-  font-family: inherit;
-  font-size: 100%;
-  font-size: 1.4rem;
-  line-height: 1.15;
-  overflow: visible;
-  text-transform: none;
-  position: relative;
-  transition: all 0.2s;
-  transition-timing-function: ease-in;
-}
-button::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
-}
-button:-moz-focusring {
-  outline: 1px dotted ButtonText;
-}
-/* loading styles */
+
+
 .spinner {
   line-height: 1.15;
   position: absolute;
@@ -66,7 +42,7 @@ button:-moz-focusring {
   transition-property: padding, opacity;
   transition-duration: 0.2s, 0.2s;
   transition-timing-function: ease-in, ease;
-  transition-delay: 0s, 0.2s;
+   transition-delay: 0s, 0.2s;
 
   span {
     box-sizing: border-box;
@@ -103,9 +79,6 @@ button:-moz-focusring {
   }
 }
 
-button:not(:disabled) {
-  transition-delay: 0.2s;
-}
 button:not(:disabled) .spinner span {
   box-shadow: 0 0 0 0.2rem #888 inset;
   border: 7.4px solid transparent;
@@ -132,5 +105,4 @@ button:not(:disabled) .spinner span:nth-child(4) {
     transform: rotate(360deg);
   }
 }
-
 </style>

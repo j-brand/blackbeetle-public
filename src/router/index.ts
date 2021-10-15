@@ -35,11 +35,15 @@ const router = createRouter({
     },
     {
       path: "/verify-email/:token",
-      component: () => import(/* webpackChunkName: "comp-group" */ "../views/VerifyEmail.vue"),
+      component: () => import(/* webpackChunkName: "comp-group" */ "../views/Subscription/VerifyEmail.vue"),
+    },
+    {
+      path: "/manage-subscriptions/:token",
+      component: () => import(/* webpackChunkName: "comp-group" */ "../views/Subscription/ManageSubscriptions.vue"),
     },
     {
       path: "/resend-verification",
-      component: () => import(/* webpackChunkName: "comp-group" */ "../views/ResendVerification.vue"),
+      component: () => import(/* webpackChunkName: "comp-group" */ "../views/Subscription/ResendVerification.vue"),
     },
     {
       path: "/privacy-policy",

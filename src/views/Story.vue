@@ -109,7 +109,7 @@ export default {
     }
 
     function closeSub() {
-        showSub.value = false;
+      showSub.value = false;
     }
 
     onMounted(fetchStory);

@@ -21,12 +21,9 @@
             <input class="w-full bb-input-light" type="email" v-model="email" name="email" id="email" required />
           </div>
           <div class="mt-3">
-            <label class="checkbox-wrapper"
-              >Ich habe die <router-link to="/privacy-policy" class="text-bb-red underline">Datenschutzerklärung</router-link> gelesen und akzeptiere sie.
-              <input type="checkbox" v-model="checked" />
-              <span class="checkmark"></span>
-              <span class="text-bb-red text-sm" v-if="errors['privacy']"><br />{{ errors["privacy"] }}</span>
-            </label>
+            <BaseCheckbox fieldId="priv-opt-in" v-model:checked="checked" :message="errors['privacy']">
+              Ich habe die <router-link to="/privacy-policy" class="text-bb-red underline">Datenschutzerklärung</router-link> gelesen und akzeptiere sie.
+            </BaseCheckbox>
           </div>
         </div>
         <div class="min-h-4 pl-8">
@@ -58,8 +55,8 @@ export default {
     const checked = ref(false);
     async function subscribe() {
       /* eslint-disable camelcase */
-      /* eslint-disable @typescript-eslint/camelcase */
-      if (checked.value === true) {
+      /* eslint-disable @typescript-eslint/camelcase */      
+      if (checked.value) {
         const paylaod = { option: props.storyID, email: email?.value, name: name?.value };
         await ApiService.post("newsletter", paylaod).then((response) => {
           switch (response.status) {
@@ -81,7 +78,7 @@ export default {
         errors.value["privacy"] = "Dein Einverständnis ist erforderlich.";
       }
     }
-    return { message, subscribe, email, name, checked, errors};
+    return { message, subscribe, email, name, checked, errors };
   },
 };
 </script>

@@ -18,7 +18,7 @@ main {
 //BUTTONS
 
 .bb-btn {
-  @apply rounded-lg outline-none transition duration-200 px-3 py-2;
+  @apply rounded-lg outline-none transition-all duration-300 ease-in-out px-3 py-1;
 
   &.bb-btn-lighter {
     @apply border border-bb-lighter border-solid;
@@ -152,49 +152,3 @@ img[lazy="loaded"] {
 /*CUSTOM CHECKBOX*/
 /* Customize the label (the container) */
 
-.checkbox-wrapper {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  cursor: pointer;
-  user-select: none;
-  input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-    
-    &:checked ~ .checkmark {
-      background-color: theme("colors.bb-charcole");
-      border: 1px solid theme("colors.bb-lighter");
-    }
-    
-    &:checked ~ .checkmark:after {
-      display: block;
-    }
-  }
-  .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 20px;
-    width: 20px;
-    border-radius: 5px;
-    background-color:  theme("colors.bb-lighter");
-
-    &:after {
-      content: "";
-      position: absolute;
-      display: none;
-      left: 6px;
-      top: 3px;
-      width: 6px;
-      height: 10px;
-      border: solid  theme("colors.bb-lighter");
-      border-width: 0 3px 3px 0;
-      transform: rotate(45deg);
-
-    }
-  }
-}
