@@ -1,7 +1,10 @@
 <template>
   <label :for="fieldId" class="checkbox-wrapper ">
     <slot></slot>
-    <input :id="fieldId" type="checkbox" :checked="checked" @input="(event) => $emit('update:checked', event.target.checked)" />
+    <!--    <input :id="fieldId" type="checkbox" :checked="checked" @input="(event) => $emit('update:checked', event.target.checked)" />
+ -->
+    <input :id="fieldId" type="checkbox" :checked="checked" @input="(event) => onChange(event)" />
+
     <span class="checkmark"></span>
     <span class="text-bb-red text-sm" v-if="message"><br />{{ message }}</span>
   </label>
@@ -24,6 +27,21 @@ export default {
       type: String,
       requierd: false,
     },
+    multiple: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
+  setup(props, { emit }) {
+    function onChange(event) {
+      if (props.multiple) {
+        emit("checked", { id: props.fieldId, value: event.target.checked });
+      } else {
+        emit("update:checked", event.target.checked);
+      }
+    }
+    return { onChange };
   },
 };
 </script>
@@ -41,12 +59,12 @@ export default {
     cursor: pointer;
     height: 0;
     width: 0;
-    
+
     &:checked ~ .checkmark {
       background-color: theme("colors.bb-charcole");
       border: 1px solid theme("colors.bb-lighter");
     }
-    
+
     &:checked ~ .checkmark:after {
       display: block;
     }
@@ -58,8 +76,8 @@ export default {
     height: 20px;
     width: 20px;
     border-radius: 5px;
-    background-color:  theme("colors.bb-lighter");
-    border:1px solid theme("colors.bb-charcole");
+    background-color: theme("colors.bb-lighter");
+    border: 1px solid theme("colors.bb-charcole");
 
     &:after {
       content: "";
@@ -69,12 +87,10 @@ export default {
       top: 3px;
       width: 6px;
       height: 10px;
-      border: solid  theme("colors.bb-lighter");
+      border: solid theme("colors.bb-lighter");
       border-width: 0 3px 3px 0;
       transform: rotate(45deg);
-
     }
   }
 }
-
 </style>

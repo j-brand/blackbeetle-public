@@ -1,5 +1,5 @@
 <template>
-  <div class="z-50 md:px-4">
+  <div class="md:px-4">
     <div class="bg-bb-charcole text-bb-lighter md:h-auto p-10 max-w-lg md:rounded-lg mx-auto relative">
       <h3 class="font-medium text-2xl mb-4 uppercase tracking-wide">werde benachrichtigt</h3>
       <div class="text-xl leading-6">
@@ -22,7 +22,7 @@
           </div>
           <div class="mt-3">
             <BaseCheckbox fieldId="priv-opt-in" v-model:checked="checked" :message="errors['privacy']">
-              Ich habe die <router-link to="/privacy-policy" class="text-bb-red underline">Datenschutzerklärung</router-link> gelesen und akzeptiere sie.
+              <span class="text-sm transform -translate-y-1">Ich habe die <router-link to="/privacy-policy" class="text-bb-red underline">Datenschutzerklärung</router-link> gelesen und akzeptiere sie.</span>
             </BaseCheckbox>
           </div>
         </div>
@@ -41,6 +41,8 @@
 <script lang="ts">
 import ApiService from "@/common/api.service";
 import { ref } from "vue";
+import { useToast } from "vue-toastification";
+
 
 export default {
   name: "SubModal",
@@ -53,12 +55,14 @@ export default {
     const name = ref([]);
     const errors = ref([]);
     const checked = ref(false);
+    const toast = useToast();
+
     async function subscribe() {
       /* eslint-disable camelcase */
-      /* eslint-disable @typescript-eslint/camelcase */      
+      /* eslint-disable @typescript-eslint/camelcase */
       if (checked.value) {
-        const paylaod = { option: props.storyID, email: email?.value, name: name?.value };
-        await ApiService.post("newsletter", paylaod).then((response) => {
+        const payload = { option: `S${props.storyID}`, email: email?.value, name: name?.value };
+        await ApiService.post("newsletter", payload).then((response) => {
           switch (response.status) {
             case 422:
               errors.value = response.data.errors;
@@ -67,6 +71,7 @@ export default {
               message.value = response.data.message;
               break;
             case 200:
+              toast.success(response.data.message);
               emit("close", true);
               break;
 

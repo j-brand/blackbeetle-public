@@ -22,6 +22,7 @@
 import { ref } from "vue";
 import ApiService from "@/common/api.service";
 import BaseLoadingButton from "@/components/BaseLoadingButton.vue";
+import { useToast } from "vue-toastification";
 
 export default {
   components: {
@@ -31,6 +32,7 @@ export default {
     const message = ref({});
     const email = ref([]);
     const isLoading = ref(false);
+    const toast = useToast();
 
     async function send() {
       isLoading.value = true;
@@ -39,10 +41,11 @@ export default {
       const paylaod = { email: email.value };
       await ApiService.post("resend-verification", paylaod).then((response) => {
         if (response.status == 200) {
-          message.value = { success: "Wir haben dir eine E-Mail geschickt. Bitte schau in deinem Posteingang nach." };
+          toast.success("Wir haben dir eine E-Mail geschickt. Bitte schau in deinem Posteingang nach.");
+
           email.value = [];
-        } else {
-          message.value = response.data.errors;
+        } else {          
+          toast.error(response.data.errors.email[0]);
         }
         isLoading.value = false;
       });

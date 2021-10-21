@@ -29,7 +29,7 @@
     </template>
     <Pagination :offset="3" :pagination="story.posts" @paginate="fetchStory" class="mt-10" />
   </div>
-  <transition name="fade">
+  <transition class="z-10" name="fade">
     <BlurBG v-if="showSub">
       <StoryNotoficationSubscription v-click-outside="closeSub" :storyID="story.id" @close="showSub = !showSub" />
     </BlurBG>
